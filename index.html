@@ -238,7 +238,6 @@
       margin-bottom: 1rem;
       display: block;
     }
-    /* fixed image size for sudoku */
     .project-img.sudoku-img {
       max-width: 100%;
       height: auto;
@@ -350,6 +349,138 @@
     i {
       margin-right: 4px;
     }
+    /* Screenshot gallery styles */
+    .screenshot-gallery {
+      margin: 1.5rem 0;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-bottom: 0.8rem;
+    }
+    .gallery-item {
+      cursor: pointer;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      background: #0f172a;
+      padding: 4px;
+    }
+    .gallery-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 20px rgba(56, 189, 248, 0.2);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      max-height: 200px;
+      object-fit: contain;
+      display: block;
+      transition: all 0.2s;
+      background: #0f172a;
+      border-radius: 8px;
+    }
+    .image-caption {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(8px);
+      justify-content: center;
+      align-items: center;
+    }
+    .lightbox-content {
+      max-width: 90%;
+      max-height: 80%;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 0 40px rgba(56, 189, 248, 0.3);
+    }
+    .lightbox-caption {
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 1rem;
+      position: absolute;
+      bottom: 15%;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,0.6);
+    }
+    .close-lightbox {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .close-lightbox:hover {
+      color: #38bdf8;
+    }
+    .lightbox-prev, .lightbox-next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -50px;
+      color: white;
+      font-weight: bold;
+      font-size: 30px;
+      transition: 0.3s;
+      user-select: none;
+      background: rgba(0,0,0,0.5);
+      border-radius: 50%;
+    }
+    .lightbox-prev:hover, .lightbox-next:hover {
+      background: #38bdf8;
+      color: black;
+    }
+    .lightbox-prev {
+      left: 20px;
+    }
+    .lightbox-next {
+      right: 20px;
+    }
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .gallery-item img {
+        height: 120px;
+      }
+      .lightbox-prev, .lightbox-next {
+        font-size: 20px;
+        padding: 10px;
+      }
+    }
+    /* Snake AI specific */
+    .snake-battle-image {
+      width: auto;
+      max-width: 250px;
+      max-height: 160px;
+      height: auto;
+      object-fit: contain;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
   </style>
 </head>
 <body>
@@ -394,52 +525,147 @@
 
 <section id="projects" class="fade-up">
   <h2>Featured Projects</h2>
-  <!-- Mobile Market -->
-<div class="project">
-  <h3><i class="fas fa-store"></i> Mobile Market</h3>
-  <p>Full-stack mobile marketplace with user authentication, product listings, and a dynamic rating system. Built with PHP backend, MySQL database, and Android frontend integration.</p>
-  <a href="https://github.com/SindyMl/Mobilemarket.git" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; color: #38bdf8; text-decoration: none;">
-    <i class="fab fa-github"></i> View Code on GitHub →
-  </a>
-</div>
 
-    <!-- Ukuthula -->
-    <div class="project">
-  <h3><i class="fas fa-shield-alt"></i> Ukuthula – Community Shield App</h3>
-  <p>Hackathon project focused on personal safety and GBV awareness. Features safety networks, emergency contacts, secure documentation storage, and real-time alert system.</p>
-  
-  <!-- Screenshot Gallery -->
-  <!-- Screenshot Gallery -->
-<div class="screenshot-gallery">
-  <div class="gallery-grid">
-    <div class="gallery-item" onclick="openLightbox(0)">
-      <img src="images/homepage.jpeg" alt="Ukuthula Home Screen">
-      <div class="image-caption">Home Dashboard</div>
+  <!-- Mobile Market -->
+  <div class="project">
+    <h3><i class="fas fa-store"></i> Mobile Market</h3>
+    <p>Full-stack mobile marketplace with user authentication, product listings, and a dynamic rating system. Built with PHP backend, MySQL database, and Android frontend integration.</p>
+    <a href="https://github.com/SindyMl/Mobilemarket.git" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; color: #38bdf8; text-decoration: none;">
+      <i class="fab fa-github"></i> View Code on GitHub →
+    </a>
+  </div>
+
+  <!-- Career Intelligence Platform -->
+  <div class="project">
+    <h3><i class="fas fa-brain"></i> AI-Powered Career Intelligence Platform</h3>
+
+    <div class="screenshot-gallery">
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox(0)">
+          <img src="images/career-upload.jpeg" alt="Career Platform - Upload CV">
+          <div class="image-caption">Upload CV</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(1)">
+          <img src="images/career-results.jpeg" alt="Career Platform - Results">
+          <div class="image-caption">AI Analysis Results</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(2)">
+          <img src="images/career-roadmap.jpeg" alt="Career Platform - Learning Roadmap">
+          <div class="image-caption">Learning Roadmap</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(3)">
+          <img src="images/career-resources.jpeg" alt="Career Platform - Resources">
+          <div class="image-caption">Learning Resources</div>
+        </div>
+      </div>
     </div>
-    <div class="gallery-item" onclick="openLightbox(1)">
-      <img src="images/circleoftrust.jpeg" alt="Ukuthula Safety Network">
-      <div class="image-caption">Circle of Trust</div>
+
+    <p>Full-stack web application that uses Machine Learning to analyze CVs and provide personalized career recommendations with learning resources, certifications, and project ideas.</p>
+
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0;">
+      <a href="https://github.com/Alon-Algorithm/career-intelligence-platform" target="_blank" style="background: #1e293b; padding: 8px 18px; border-radius: 40px; text-decoration: none; color: #eef5ff; display: inline-flex; align-items: center; gap: 8px; transition: 0.2s;">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+      <a href="https://career-intelligence-platform-1-xuy1.onrender.com" target="_blank" style="background: #38bdf8; padding: 8px 18px; border-radius: 40px; text-decoration: none; color: #020617; display: inline-flex; align-items: center; gap: 8px; transition: 0.2s; font-weight: 600;">
+        <i class="fas fa-external-link-alt"></i> Live Demo
+      </a>
     </div>
-    <div class="gallery-item" onclick="openLightbox(2)">
-      <img src="images/emergencyalert.jpeg" alt="Ukuthula Emergency Alert">
-      <div class="image-caption">Emergency Alert</div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(3)">
-      <img src="images/securedocuments.jpeg" alt="Ukuthula Secure Documents">
-      <div class="image-caption">Secure Documents</div>
+
+    <p><strong>Key Features:</strong></p>
+    <ul>
+      <li>CV parsing and skill extraction using NLP</li>
+      <li>K-Means clustering for candidate segmentation</li>
+      <li>10 career clusters with detailed insights</li>
+      <li>Personalized learning roadmaps with clickable resources</li>
+      <li>Certification recommendations and project ideas</li>
+      <li>CI/CD deployment on Render</li>
+    </ul>
+
+    <p><strong>Tech Stack:</strong></p>
+    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.5rem 0 1rem 0;">
+      <span style="background: #1e293b; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem;">React</span>
+      <span style="background: #1e293b; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem;">TypeScript</span>
+      <span style="background: #1e293b; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem;">Tailwind CSS</span>
+      <span style="background: #1e293b; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem;">Python</span>
+      <span style="background: #1e293b; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem;">FastAPI</span>
+      <span style="background: #1e293b; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem;">scikit-learn</span>
+      <span style="background: #1e293b; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem;">Docker</span>
+      <span style="background: #1e293b; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem;">Render</span>
     </div>
   </div>
-</div>
-  
-  <p><strong>Key Features:</strong></p>
-  <ul>
-    <li>Emergency SOS with location sharing</li>
-    <li>Community safety network & trusted contacts</li>
-    <li>Secure document vault for evidence storage</li>
-    <li>GBV resources & support directory</li>
-  </ul>
-  <p><em>Private repository — showcasing UI/UX through screenshots</em></p>
-</div>
+
+  <!-- Ukuthula -->
+  <div class="project">
+    <h3><i class="fas fa-shield-alt"></i> Ukuthula – Community Shield App</h3>
+    <p>Hackathon project focused on personal safety and GBV awareness. Features safety networks, emergency contacts, secure documentation storage, and real-time alert system.</p>
+
+    <div class="screenshot-gallery">
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox(4)">
+          <img src="images/homepage.jpeg" alt="Ukuthula Home Screen">
+          <div class="image-caption">Home Dashboard</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(5)">
+          <img src="images/circleoftrust.jpeg" alt="Ukuthula Safety Network">
+          <div class="image-caption">Circle of Trust</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(6)">
+          <img src="images/emergencyalert.jpeg" alt="Ukuthula Emergency Alert">
+          <div class="image-caption">Emergency Alert</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(7)">
+          <img src="images/securedocuments.jpeg" alt="Ukuthula Secure Documents">
+          <div class="image-caption">Secure Documents</div>
+        </div>
+      </div>
+    </div>
+
+    <p><strong>Key Features:</strong></p>
+    <ul>
+      <li>Emergency SOS with location sharing</li>
+      <li>Community safety network & trusted contacts</li>
+      <li>Secure document vault for evidence storage</li>
+      <li>GBV resources & support directory</li>
+    </ul>
+    <p><em>Private repository — showcasing UI/UX through screenshots</em></p>
+  </div>
+
+  <!-- Sudoku Solver -->
+  <div class="project">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg" alt="Sudoku Grid" class="project-img sudoku-img" style="max-height:160px; width:auto; background:#0a0f1f; padding:10px;">
+    <h3><i class="fas fa-puzzle-piece"></i> 16x16 Sudoku Solver</h3>
+    <p>Advanced solver supporting 16x16 grids with alphanumeric symbols (A–G). Implements optimized backtracking and constraint propagation to solve complex puzzles efficiently.</p>
+    <p><strong>Key Features:</strong></p>
+    <ul>
+      <li>Extended 16x16 grid logic</li>
+      <li>Alphanumeric value support (0-9, A-G)</li>
+      <li>Efficient recursion + pruning</li>
+    </ul>
+    <p><em>Academic project — code reserved for university policy.</em></p>
+  </div>
+
+  <!-- Competitive Snake AI -->
+  <div class="project">
+    <h3><i class="fas fa-robot"></i> Competitive Snake AI</h3>
+    <img src="images/snakeai.png" alt="4-Player Snake Battle Arena" class="snake-battle-image">
+    <p>Competitive Snake game environment with 4 snakes battling simultaneously. Implemented intelligent decision-making strategies to maximize survival, prioritize apples, avoid poison, and outmaneuver opponents.</p>
+    <p><strong>Game Mechanics:</strong></p>
+    <ul>
+      <li><strong>Normal Apples:</strong> grow snake's length</li>
+      <li><strong>Poison Apples:</strong> shrinks the snake</li>
+      <li><i class="fas fa-users"></i> <strong>4 Snakes:</strong> Simultaneous multiplayer battle</li>
+      <li><strong>Win Condition:</strong> Highest points</li>
+    </ul>
+    <p><strong>Strategies Implemented:</strong></p>
+    <ul>
+      <li>Pathfinding optimization used the BFS method we learnt in the module Analysis of algorithms</li>
+      <li>Collision avoidance with self, walls, and other snakes</li>
+      <li>Risk assessment for poison vs. reward prioritization</li>
+      <li>Adaptive behavior based on current score and round</li>
+    </ul>
+    <p><em>Academic project — developed for course competition (code available upon request)</em></p>
+  </div>
+</section>
 
 <!-- Lightbox Modal -->
 <div id="lightbox" class="lightbox">
@@ -449,313 +675,6 @@
   <a class="lightbox-prev" onclick="changeImage(-1)">&#10094;</a>
   <a class="lightbox-next" onclick="changeImage(1)">&#10095;</a>
 </div>
-
-<style>
-.screenshot-gallery {
-  margin: 1.5rem 0;
-}
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1rem;
-  margin-bottom: 0.8rem;
-}
-
-.gallery-item {
-  cursor: pointer;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
-  background: #0f172a;
-  padding: 4px;
-}
-
-.gallery-item {
-  cursor: pointer;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.gallery-item:hover {
-  transform: scale(1.02);
-  box-shadow: 0 8px 20px rgba(56, 189, 248, 0.2);
-}
-
-.gallery-item img {
-  width: 100%;
-  height: auto;
-  max-height: 200px;
-  object-fit: contain;
-  display: block;
-  transition: all 0.2s;
-  background: #0f172a;
-  border-radius: 8px;
-}
-
-.image-caption {
-  font-size: 0.85rem;
-  color: #94a3b8;
-  text-align: center;
-  margin-top: 0.5rem;
-  
-}
-
-/* Lightbox Modal */
-.lightbox {
-  display: none;
-  position: fixed;
-  z-index: 2000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.95);
-  backdrop-filter: blur(8px);
-  justify-content: center;
-  align-items: center;
-}
-
-.lightbox-content {
-  max-width: 90%;
-  max-height: 80%;
-  object-fit: contain;
-  border-radius: 12px;
-  box-shadow: 0 0 40px rgba(56, 189, 248, 0.3);
-}
-
-.lightbox-caption {
-  color: white;
-  text-align: center;
-  padding: 1rem;
-  font-size: 1rem;
-  position: absolute;
-  bottom: 15%;
-  left: 0;
-  right: 0;
-  background: rgba(0,0,0,0.6);
-}
-
-.close-lightbox {
-  position: absolute;
-  top: 20px;
-  right: 35px;
-  color: #f1f1f1;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.close-lightbox:hover {
-  color: #38bdf8;
-}
-
-.lightbox-prev, .lightbox-next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -50px;
-  color: white;
-  font-weight: bold;
-  font-size: 30px;
-  transition: 0.3s;
-  user-select: none;
-  background: rgba(0,0,0,0.5);
-  border-radius: 50%;
-}
-
-.lightbox-prev:hover, .lightbox-next:hover {
-  background: #38bdf8;
-  color: black;
-}
-
-.lightbox-prev {
-  left: 20px;
-}
-
-.lightbox-next {
-  right: 20px;
-}
-
-@media (max-width: 768px) {
-  .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .gallery-item img {
-    height: 120px;
-  }
-  .lightbox-prev, .lightbox-next {
-    font-size: 20px;
-    padding: 10px;
-  }
-}
-</style>
-
-<script>
-// Screenshot gallery data - UPDATE THESE WITH YOUR ACTUAL SCREENSHOT PATHS
-const galleryImages = [
-  { src: "images/homepage.jpeg", caption: "Ukuthula - Home Dashboard with safety status" },
-  { src: "images/circleoftrust.jpeg", caption: "Safety Network - Trusted contacts & community alerts" },
-  { src: "images/emergencyalert.jpeg", caption: "Emergency Alert System - One-tap SOS" },
-  { src: "images/securedocuments.jpeg", caption: "Secure Document Vault - Evidence storage" }
-];
-
-let currentImageIndex = 0;
-
-function openLightbox(index) {
-  currentImageIndex = index;
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-  const caption = document.getElementById('lightbox-caption');
-  
-  lightbox.style.display = "flex";
-  lightboxImg.src = galleryImages[currentImageIndex].src;
-  caption.textContent = galleryImages[currentImageIndex].caption;
-}
-
-function closeLightbox() {
-  document.getElementById('lightbox').style.display = "none";
-}
-
-function changeImage(direction) {
-  currentImageIndex += direction;
-  if (currentImageIndex >= galleryImages.length) currentImageIndex = 0;
-  if (currentImageIndex < 0) currentImageIndex = galleryImages.length - 1;
-  
-  const lightboxImg = document.getElementById('lightbox-img');
-  const caption = document.getElementById('lightbox-caption');
-  
-  lightboxImg.src = galleryImages[currentImageIndex].src;
-  caption.textContent = galleryImages[currentImageIndex].caption;
-}
-
-// Close lightbox with Escape key
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    closeLightbox();
-  }
-  if (e.key === 'ArrowLeft') {
-    changeImage(-1);
-  }
-  if (e.key === 'ArrowRight') {
-    changeImage(1);
-  }
-});
-</script>
-
-    <!-- Sudoku solver with FIXED image size -->
-    <div class="project">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg" alt="Sudoku Grid" class="project-img sudoku-img" style="max-height:160px; width:auto; background:#0a0f1f; padding:10px;">
-      <h3><i class="fas fa-puzzle-piece"></i> 16x16 Sudoku Solver</h3>
-      <p>Advanced solver supporting 16x16 grids with alphanumeric symbols (A–G). Implements optimized backtracking and constraint propagation to solve complex puzzles efficiently.</p>
-      <p><strong>Key Features:</strong></p>
-      <ul>
-        <li>Extended 16x16 grid logic</li>
-        <li>Alphanumeric value support (0-9, A-G)</li>
-        <li>Efficient recursion + pruning</li>
-      </ul>
-      <p><em>Academic project — code reserved for university policy.</em></p>
-    </div>
- 
-<div class="project">
-  <h3><i class="fas fa-robot"></i> Competitive Snake AI</h3>
-  
-  <!-- Game Visual -->
-  
-        <!-- Your Image -->
-        <img src="images/snakeai.png" alt="4-Player Snake Battle Arena" class="snake-battle-image">
-  
-  <p>Competitive Snake game environment with 4 snakes battling simultaneously. Implemented intelligent decision-making strategies to maximize survival, prioritize apples, avoid poison, and outmaneuver opponents.</p>
-  
-  <p><strong>Game Mechanics:</strong></p>
-  <ul>
-    <li><strong>Normal Apples:</strong> grow snake's length</li>
-    <li><strong>Poison Apples:</strong> shrinks the snake</li>
-    <li><i class="fas fa-users"></i> <strong>4 Snakes:</strong> Simultaneous multiplayer battle</li>
-    <li><strong>Win Condition:</strong> Highest points</li>
-  </ul>
-  
-  <p><strong>Strategies Implemented:</strong></p>
-  <ul>
-    <li>Pathfinding optimization used the BFS method we learnt in the module Analysis of algorithms</li>
-    <li>Collision avoidance with self, walls, and other snakes</li>
-    <li>Risk assessment for poison vs. reward prioritization</li>
-    <li>Adaptive behavior based on current score and round</li>
-  </ul>
-  
-  <p><em>Academic project — developed for course competition (code available upon request)</em></p>
-  </div>
-</div>
-
-<style>
-.snake-visual {
-  margin: 1.5rem 0;
-}
-
-.game-grid-preview {
-  background: linear-gradient(135deg, #0a0f2a, #0f172a);
-  border-radius: 16px;
-  padding: 1rem;
-  border: 1px solid rgba(56, 189, 248, 0.3);
-  text-align: center;
-  margin: 0 auto;
-  max-width: 320px;
-}
-
-.snake-battle-image {
-  width: auto;
-  max-width: 250px;
-  max-height: 160px;
-  height: auto;
-  object-fit: contain;
-  border-radius: 12px;
-  margin-bottom: 1rem;
-  border: 1px solid rgba(56, 189, 248, 0.3);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.snake-icon {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  color: #38bdf8;
-}
-
-.snake-icon i {
-  font-size: 2rem;
-  margin-right: 0.5rem;
-}
-
-.game-stats-preview {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  margin-top: 1rem;
-}
-
-.game-stats-preview span {
-  background: rgba(56, 189, 248, 0.1);
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.grid-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-</style>
-</section>
 
 <section id="certifications" class="fade-up">
   <h2>Certifications</h2>
@@ -775,7 +694,6 @@ document.addEventListener('keydown', function(e) {
   <p style="margin-bottom: 1.5rem;">I'm open to software engineering opportunities, collaborations, and tech conversations.</p>
   <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; margin-bottom: 2rem;">
     <div><i class="fas fa-envelope" style="color:#38bdf8;"></i> <strong>alondwemabaso1@students.wits.ac.za</strong></div>
-  
   </div>
   <div class="links">
     <a href="https://linkedin.com/in/alondwe-mabaso-0b099937b" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
@@ -784,11 +702,58 @@ document.addEventListener('keydown', function(e) {
 </section>
 
 <footer>
-  <p>© 2026 Alondwe Mabaso </p>
+  <p>© 2026 Alondwe Mabaso</p>
 </footer>
 
 <script>
-  // smooth scroll with offset for fixed nav
+  // Gallery images (Career Platform + Ukuthula)
+  const galleryImages = [
+    // Career Platform (indices 0-3)
+    { src: "images/career-upload.jpeg", caption: "Career Platform - Upload your CV for analysis" },
+    { src: "images/career-results.jpeg", caption: "AI-powered career analysis with match percentage" },
+    { src: "images/career-roadmap.jpeg", caption: "Personalized learning roadmap with priority steps" },
+    { src: "images/career-resources.jpeg", caption: "Learning resources with clickable links" },
+    // Ukuthula (indices 4-7)
+    { src: "images/homepage.jpeg", caption: "Ukuthula - Home Dashboard with safety status" },
+    { src: "images/circleoftrust.jpeg", caption: "Safety Network - Trusted contacts & community alerts" },
+    { src: "images/emergencyalert.jpeg", caption: "Emergency Alert System - One-tap SOS" },
+    { src: "images/securedocuments.jpeg", caption: "Secure Document Vault - Evidence storage" }
+  ];
+
+  let currentImageIndex = 0;
+
+  function openLightbox(index) {
+    currentImageIndex = index;
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const caption = document.getElementById('lightbox-caption');
+    lightbox.style.display = "flex";
+    lightboxImg.src = galleryImages[currentImageIndex].src;
+    caption.textContent = galleryImages[currentImageIndex].caption;
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').style.display = "none";
+  }
+
+  function changeImage(direction) {
+    currentImageIndex += direction;
+    if (currentImageIndex >= galleryImages.length) currentImageIndex = 0;
+    if (currentImageIndex < 0) currentImageIndex = galleryImages.length - 1;
+    const lightboxImg = document.getElementById('lightbox-img');
+    const caption = document.getElementById('lightbox-caption');
+    lightboxImg.src = galleryImages[currentImageIndex].src;
+    caption.textContent = galleryImages[currentImageIndex].caption;
+  }
+
+  // Keyboard shortcuts
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') changeImage(-1);
+    if (e.key === 'ArrowRight') changeImage(1);
+  });
+
+  // Smooth scroll with offset
   document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
     anchor.addEventListener("click", function(e) {
       e.preventDefault();
@@ -806,7 +771,7 @@ document.addEventListener('keydown', function(e) {
     });
   });
 
-  // Intersection Observer for fade-up reveal
+  // Intersection Observer for fade-up
   const fadeElements = document.querySelectorAll('.fade-up');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -816,10 +781,9 @@ document.addEventListener('keydown', function(e) {
       }
     });
   }, { threshold: 0.12, rootMargin: "0px 0px -30px 0px" });
-  
   fadeElements.forEach(el => observer.observe(el));
-  
-  // also reveal hidden on page load for any .fade-up already visible
+
+  // Reveal already visible elements
   setTimeout(() => {
     fadeElements.forEach(el => {
       const rect = el.getBoundingClientRect();
@@ -829,8 +793,8 @@ document.addEventListener('keydown', function(e) {
       }
     });
   }, 100);
-  
-  // dynamic navbar background on scroll
+
+  // Dynamic navbar
   const navBar = document.querySelector('nav');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 20) {
@@ -840,18 +804,17 @@ document.addEventListener('keydown', function(e) {
       navBar.style.background = "rgba(5, 11, 26, 0.75)";
     }
   });
-  
-  // optional: fix image fallback if any broken, but sudoku image is now controlled size
+
+  // Sudoku image tweak
   const sudokuImg = document.querySelector('.sudoku-img');
   if (sudokuImg) {
     sudokuImg.style.maxWidth = "280px";
     sudokuImg.style.marginBottom = "1rem";
     sudokuImg.style.borderRadius = "12px";
   }
-  
-  // extra polish: make project images consistent
-  const allProjImgs = document.querySelectorAll('.project-img:not(.sudoku-img)');
-  allProjImgs.forEach(img => {
+
+  // Make project images consistent
+  document.querySelectorAll('.project-img:not(.sudoku-img)').forEach(img => {
     img.style.objectFit = "cover";
     img.style.height = "180px";
     img.style.width = "100%";
