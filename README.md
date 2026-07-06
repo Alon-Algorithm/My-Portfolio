@@ -15,6 +15,8 @@ Personal portfolio website showcasing my software engineering projects, skills, 
 - **Google Fonts (Inter)** - Typography
 - **GitHub Pages** - Hosting
 
+
+```text
 ## Project Structure
 Alon-Algorithm.github.io/
 ├── index.html # Main portfolio page
