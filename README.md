@@ -4,7 +4,7 @@ Personal portfolio website showcasing my software engineering projects, skills, 
 
 ## Live Demo
 
-[Visit my portfolio →](https://alon-algorithm.github.io/)
+[Visit my portfolio →](https://alon-algorithm.github.io/My-Portfolio/)
 
 ## Built With
 
