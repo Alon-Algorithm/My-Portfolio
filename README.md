@@ -16,8 +16,9 @@ Personal portfolio website showcasing my software engineering projects, skills, 
 - **GitHub Pages** - Hosting
 
 
-```text
+
 ## Project Structure
+```text
 Alon-Algorithm.github.io/
 ├── index.html # Main portfolio page
 ├── .nojekyll # Bypasses Jekyll build
@@ -35,7 +36,7 @@ Alon-Algorithm.github.io/
 │ ├── securedocuments.jpeg # Ukuthula - Secure Documents
 │ └── snakeai.png # Snake AI
 └── README.md # This file
-
+```
 
 
 ## Features
