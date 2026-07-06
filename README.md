@@ -63,5 +63,5 @@ Alon-Algorithm.github.io/
 ---
 
 © 2026 Alondwe Mabaso
-This README is only about your portfolio - what it is, what it's built with, and what it contains. No unrelated projects or certifications listed here (they're already in your portfolio itself).
+
 
