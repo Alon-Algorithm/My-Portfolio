@@ -511,14 +511,91 @@
   <h2>Skills</h2>
   <div class="grid">
     <div class="skill-card"><h3><i class="fas fa-code"></i> Languages</h3><p>Java, Python, C++, C, JavaScript, Kotlin</p></div>
-    <div class="skill-card"><h3><i class="fab fa-html5"></i> Web</h3><p>HTML, CSS, React</p></div>
+    <div class="skill-card"><h3><i class="fab fa-html5"></i> Web</h3><p>HTML, CSS, React, TypeScript, Tailwind CSS</p></div>
     <div class="skill-card"><h3><i class="fab fa-android"></i> Mobile</h3><p>Android (Java/Kotlin), React Native</p></div>
-    <div class="skill-card"><h3><i class="fas fa-database"></i> Backend</h3><p>PHP, MySQL, Firebase, REST APIs, Node.js</p></div>
+    <div class="skill-card"><h3><i class="fas fa-database"></i> Backend</h3><p>PHP, MySQL, Firebase, REST APIs, FastAPI</p></div>
+    <div class="skill-card"><h3><i class="fas fa-robot"></i> ML/AI</h3><p>scikit-learn, K-Means, NLP, Data Analysis</p></div>
   </div>
 </section>
 
 <section id="projects" class="fade-up">
   <h2>Featured Projects</h2>
+
+  <!-- AI Scam Hub -->
+  <div class="project">
+    <h3><i class="fas fa-shield-alt"></i> AI Scam Hub</h3>
+
+    <div class="screenshot-gallery">
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox(0)">
+          <img src="img1.png" alt="Message Analysis">
+          <div class="image-caption">Message Analysis</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(1)">
+          <img src="img2.png" alt="URL Safety Checker">
+          <div class="image-caption">URL Safety Checker</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(2)">
+          <img src="img3.png" alt="Job Advertisement Checker">
+          <div class="image-caption">Job Ad Checker</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(3)">
+          <img src="img4.png" alt="Misinformation Detector">
+          <div class="image-caption">Misinformation Detector</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(4)">
+          <img src="img5.png" alt="Education Hub">
+          <div class="image-caption">Education Hub</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(5)">
+          <img src="img6.png" alt="Image Analysis">
+          <div class="image-caption">Image Analysis</div>
+        </div>
+      </div>
+    </div>
+
+    <p>AI-powered platform that helps individuals identify online scams, phishing attempts, fraudulent job advertisements, fake websites, and AI-generated misinformation.</p>
+
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0;">
+      <a href="https://github.com/Alon-Algorithm/ai-scam-hub" target="_blank" style="background: #1e293b; padding: 8px 18px; border-radius: 40px; text-decoration: none; color: #eef5ff; display: inline-flex; align-items: center; gap: 8px; transition: 0.2s;">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+      <a href="https://ai-scam-hub-1.onrender.com" target="_blank" style="background: #38bdf8; padding: 8px 18px; border-radius: 40px; text-decoration: none; color: #020617; display: inline-flex; align-items: center; gap: 8px; transition: 0.2s; font-weight: 600;">
+        <i class="fas fa-external-link-alt"></i> Live Demo
+      </a>
+    </div>
+
+    <p><strong>Key Features:</strong></p>
+    <ul>
+      <li><strong>Message Analysis</strong> – Detect scams in WhatsApp, SMS, and emails with real-time risk assessment</li>
+      <li><strong>URL Safety Checker</strong> – Detect phishing links with TLD reputation and brand impersonation detection</li>
+      <li><strong>Job Advertisement Checker</strong> – Identify fraudulent job postings and upfront payment scams</li>
+      <li><strong>Misinformation Detector</strong> – Analyze news and social media posts for emotional manipulation</li>
+      <li><strong>Image Analysis</strong> – OCR text extraction from screenshots with scam detection</li>
+      <li><strong>Education Hub</strong> – Interactive learning resources with knowledge quizzes</li>
+    </ul>
+
+    <p><strong>Technical Highlights:</strong></p>
+    <ul>
+      <li>Hybrid ML architecture combining pattern matching with trained models</li>
+      <li>92% detection accuracy using TF-IDF and Logistic Regression</li>
+      <li>Explainable AI with transparent predictions and user-friendly explanations</li>
+      <li>Professional UI with Material Icons and corporate color theme (#25DEEB)</li>
+    </ul>
+
+    <p><strong>Tech Stack:</strong></p>
+    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.5rem 0 1rem 0;">
+      <span style="background: #1e293b; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem;">React</span>
+      <span style="background: #1e293b; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem;">TypeScript</span>
+      <span style="background: #1e293b; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem;">Tailwind CSS</span>
+      <span style="background: #1e293b; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem;">FastAPI</span>
+      <span style="background: #1e293b; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem;">Python</span>
+      <span style="background: #1e293b; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem;">scikit-learn</span>
+      <span style="background: #1e293b; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem;">NLTK</span>
+      <span style="background: #1e293b; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem;">Tesseract OCR</span>
+      <span style="background: #1e293b; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem;">Render</span>
+    </div>
+  </div>
 
   <!-- Mobile Market -->
   <div class="project">
@@ -535,27 +612,27 @@
 
     <div class="screenshot-gallery">
       <div class="gallery-grid">
-        <div class="gallery-item" onclick="openLightbox(0)">
+        <div class="gallery-item" onclick="openLightbox(6)">
           <img src="images/image0%20(1).png" alt="Upload CV">
           <div class="image-caption">Upload CV</div>
         </div>
-        <div class="gallery-item" onclick="openLightbox(1)">
+        <div class="gallery-item" onclick="openLightbox(7)">
           <img src="images/image1.png" alt="Career Cluster Results">
           <div class="image-caption">AI Analysis Results</div>
         </div>
-        <div class="gallery-item" onclick="openLightbox(2)">
+        <div class="gallery-item" onclick="openLightbox(8)">
           <img src="images/image2.png" alt="Skills Analysis">
           <div class="image-caption">Skills Analysis</div>
         </div>
-        <div class="gallery-item" onclick="openLightbox(3)">
+        <div class="gallery-item" onclick="openLightbox(9)">
           <img src="images/image3.png" alt="Learning Resources">
           <div class="image-caption">Learning Resources</div>
         </div>
-        <div class="gallery-item" onclick="openLightbox(4)">
+        <div class="gallery-item" onclick="openLightbox(10)">
           <img src="images/image4.png" alt="Learning Roadmap">
           <div class="image-caption">Learning Roadmap</div>
         </div>
-        <div class="gallery-item" onclick="openLightbox(5)">
+        <div class="gallery-item" onclick="openLightbox(11)">
           <img src="images/image5.png" alt="Alternative Paths">
           <div class="image-caption">Alternative Paths</div>
         </div>
@@ -603,19 +680,19 @@
 
     <div class="screenshot-gallery">
       <div class="gallery-grid">
-        <div class="gallery-item" onclick="openLightbox(6)">
+        <div class="gallery-item" onclick="openLightbox(12)">
           <img src="images/homepage.jpeg" alt="Home Dashboard">
           <div class="image-caption">Home Dashboard</div>
         </div>
-        <div class="gallery-item" onclick="openLightbox(7)">
+        <div class="gallery-item" onclick="openLightbox(13)">
           <img src="images/circleoftrust.jpeg" alt="Circle of Trust">
           <div class="image-caption">Circle of Trust</div>
         </div>
-        <div class="gallery-item" onclick="openLightbox(8)">
+        <div class="gallery-item" onclick="openLightbox(14)">
           <img src="images/emergencyalert.jpeg" alt="Emergency Alert">
           <div class="image-caption">Emergency Alert</div>
         </div>
-        <div class="gallery-item" onclick="openLightbox(9)">
+        <div class="gallery-item" onclick="openLightbox(15)">
           <img src="images/securedocuments.jpeg" alt="Secure Documents">
           <div class="image-caption">Secure Documents</div>
         </div>
@@ -729,8 +806,14 @@
 </footer>
 
 <script>
-  // Gallery images
+  // Gallery images - AI Scam Hub (0-5), Career Platform (6-11), Ukuthula (12-15)
   const galleryImages = [
+    { src: "images/img1.png", caption: "AI Scam Hub - Message Analysis" },
+    { src: "images/img2.png", caption: "AI Scam Hub - URL Safety Checker" },
+    { src: "images/img3.png", caption: "AI Scam Hub - Job Advertisement Checker" },
+    { src: "images/img4.png", caption: "AI Scam Hub - Misinformation Detector" },
+    { src: "images/img5.png", caption: "AI Scam Hub - Education Hub" },
+    { src: "images/img6.png", caption: "AI Scam Hub - Image Analysis" },
     { src: "images/image0%20(1).png", caption: "Upload your CV for AI analysis" },
     { src: "images/image1.png", caption: "AI-powered career cluster analysis" },
     { src: "images/image2.png", caption: "Skills analysis with match percentage" },
